@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .profile {
+            display: flex;
+        }
+
+        .Table {
+            width: 100%;
+            height: 200px;
+            overflow-y: scroll;
+        }
+
+        .functions {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-55%, -55%);
+        }
+
+        button {
+            width: 100px;
+            height: 30px;
+            font-size: 14px;
+        }
+
+        form {
+            margin-top: 50px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="profile">
+        <img width="80px" height="80px" src="./146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png" alt="">
+        <h1>Irfan</h1>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores quo animi placeat unde, quasi obcaecati
+        error velit ut, distinctio hic consequatur tempora explicabo saepe ex culpa, dolorum aut maiores eligendi
+        praesentium dolor. Ut cupiditate vero consequuntur quas? Eveniet animi quam blanditiis, est corporis, molestiae,
+        omnis quibusdam labore saepe id culpa.</p>
+    <div class="Table">
+        <table style="margin: auto; width: 50%;" Border="1px" Cellspacing="0" id="tab">
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Credit Hours</th>
+                <th>Year Taken</th>
+            </tr>
+        </table>
+    </div>
+    <form action="">
+        <label>Course ID</label>
+        <input type="text" required id="CourseID">
+        <br>
+        <label>Course Name</label>
+        <input type="text" required id="CourseName">
+        <br>
+        <label>Credit Hour</label>
+        <input type="number" required id="CreditHour">
+        <br>
+        <label>Year Taken</label>
+        <input type="date" required id="YearTaken">
+    </form>
+
+    <input type="number" placeholder="updateChild" id="number">
+    <div class="functions">
+        <button onclick="insert()" type="submit">Insert</button>
+        <button onclick="Remove()" type="submit">Remove</button>
+        <button onclick="update()" type="submit">Update</button>
+    </div>
+</body>
+<script>
+    function insert() {
+        CourseID = document.getElementById('CourseID').value;
+        CourseName = document.getElementById('CourseName').value;
+        CreditHour = document.getElementById('CreditHour').value;
+        YearTaken = document.getElementById('YearTaken').value;
+
+        const id = document.createElement("td");
+        const name = document.createElement("td");
+        const hour = document.createElement("td");
+        const year = document.createElement("td");
+
+        id.innerHTML = CourseID;
+        name.innerHTML = CourseName;
+        hour.innerHTML = CreditHour;
+        year.innerHTML = YearTaken;
+
+        const tr = document.createElement('tr');
+        tr.appendChild(id);
+        tr.appendChild(name);
+        tr.appendChild(hour);
+        tr.appendChild(year);
+
+        document.querySelector("table").appendChild(tr);
+        
+        document.getElementById('CourseID').value  = "";
+        document.getElementById('CourseName').value  = "";
+        document.getElementById('CreditHour').value  = "";
+        document.getElementById('YearTaken').value  = "";
+    }
+    function Remove() {
+        const list = document.querySelector("table");
+        list.removeChild(list.lastElementChild);
+    }
+    function update(){
+        CourseID = document.getElementById('CourseID').value;
+        CourseName = document.getElementById('CourseName').value;
+        CreditHour = document.getElementById('CreditHour').value;
+        YearTaken = document.getElementById('YearTaken').value;
+
+        const number = document.getElementById("number").value;
+        const tr = document.getElementById("tab").children[parseInt(number)];
+        tr.children[0].innerHTML = CourseID;
+        tr.children[1].innerHTML = CourseName;
+        tr.children[2].innerHTML = CreditHour;
+        tr.children[3].innerHTML = YearTaken;
+        
+    }
+</script>
+
+</html>
